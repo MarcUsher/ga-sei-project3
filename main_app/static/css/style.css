@@ -1,13 +1,13 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #faffff;
 }
 
 main {
-    flex: 1 0 auto;
-    /* background-color: #E4C1F9; */
+  flex: 1 0 auto;
+  /* background-color: #E4C1F9; */
 }
 
 .navbar {
@@ -25,7 +25,17 @@ main {
 #head-title {
   position: relative;
   text-align: center;
-  padding: 0.5rem 0.75rem;
+  font-family: 'Cutive', serif;
+}
+
+#head-title h1 {
+  top: 15px;
+  margin-bottom: 5px;
+  font-size: 45px
+}
+
+.notification {
+  margin: 15px 0px;
 }
 
 footer {
@@ -34,6 +44,10 @@ footer {
   bottom: -24px;
   width: 100%;
   background-color: #D0F4DE;
+}
+
+.image.is-square {
+  object-fit: cover;
 }
 
 #footleft {
@@ -52,9 +66,10 @@ footer {
 
 .pagination-container {
   display: flex;
+  justify-content: center;
 }
 
-.section--form {
+.box {
   background-color: #E4C1F9;
 }
 
@@ -68,6 +83,7 @@ footer {
   max-width: 100%;
   margin-bottom: 50px;
   border-radius: 2%/5%;
+  box-shadow: 15px 15px 3px -5px rgb(214, 214, 214);
 }
 
 @media(max-width: 768px){
@@ -83,18 +99,72 @@ footer {
 }
 
 #splash {
+  display: flex;
   background-image: url("../images/cupcake-splash-cropped.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.title-center {
-  position: relative;
-  text-align: center;
-  top: 50%;
+.homepage-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
 
-.modal {
+.shadowbox-out {
+  height: 50%;
+  width: 47%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 4%/10%;
+  box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.4);
+
+}
+
+.shadowbox-in {
+  height: 30%;
+  width: 47%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 4%/10%;
+  box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.4);
+}
+
+.home-text {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  
+}
+
+header {
+  font-family: 'Arvo', serif;
+}
+
+.stroked {
+  text-align: center;
+  font-family: 'Arvo', serif;
+  color: #D0F4DE;
+  text-shadow: 
+  -1px -1px 1.5px rgb(0, 0, 0), 
+  1px -1px 1.5px rgb(0, 0, 0), 
+  -1px 1px 1.5px rgb(0, 0, 0), 
+  1px 1px 1.5px rgb(0, 0, 0);
+}
+
+/* 
+.cake-hero {
+  text-align: center;
+} */
+
+.modal-recipe {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -109,7 +179,7 @@ footer {
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background-color: #E4C1F9;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
@@ -130,5 +200,3 @@ footer {
     text-decoration: none;
     cursor: pointer;
   }
-
-

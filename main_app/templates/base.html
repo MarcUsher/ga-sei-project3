@@ -12,6 +12,9 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cutive&family=Arvo&family=Bree+Serif&family=Josefin+Slab&family=Maitree:wght@300&display=swap" rel="stylesheet">
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 </head>
 <body>
@@ -24,18 +27,25 @@
                     <a href ="{% url 'cakes_create' %}" class="navbar-item">Add a Cake</a>                                       
                 </div>
                 
-                
-                    <h1 id="head-title" class="navbar-item">Cake Sera Sera</h1>
-                
+                <div id="head-title">
+                    <a href="{% url 'home' %} ">
+                        <h1 class="navbar-item">Cake Sera, Sera</h1>
+                        <h5>Whatever will be, we'll bake.</h5>
+                    </a>
+                </div>
 
                 <div class="navbar-end">
-                    <a class="navbar-item greeting">Hi there, {{user.username}}!</a>
                     <a href="{% url 'password_change' %}" class="navbar-item">Change Password</a>
                     <a href="{% url 'logout' %}" class="navbar-item">Log Out</a>
                 {% else %}
                 </div>
 
-                <h1 id="head-title">Cake Sera Sera</h1>
+                <div id="head-title">
+                    <a href="{% url 'home' %} ">
+                        <h1 class="navbar-item">Cake Sera, Sera</h1>
+                        <h5>Whatever will be, we'll bake.</h5>
+                    </a>
+                </div>
 
                 <div class="navbar-end">
                     <a href ="{% url 'signup' %}" class="navbar-item">Sign Up</a>
@@ -48,8 +58,12 @@
 
 
     {% if messages %}
+        <br>
         {% for message in messages %}
-        <p {% if message.tags %} class="{{ message.tags }}"{% endif %} style="margin: auto;">{{ message }}</p>
+        <div {% if message.tags %} class="notification {{ message.tags }}"{% endif %} style="margin: auto;">
+            <button class="delete" onclick="this.parentElement.style.display='none'" ></button>
+            {{ message }}
+        </div>
         {% endfor %}
     {% endif %}
     

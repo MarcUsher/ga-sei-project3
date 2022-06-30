@@ -6,15 +6,23 @@ View All Cakes
 
 {% block content %}
 
-<section class="hero is-primary">
-    <div class="hero-body">
-        <p class="title">
-          Cake Sera Sera
-        </p>
-        <p class="subtitle">
-          Whatever will be, we'll bake
-        </p>
-      </div>
+<section class="hero is-warning is-light">
+    <div class="container">
+        <div class="hero-body">
+            <p class="title">
+            Our cake shelf
+            </p>
+            <p class="subtitle">
+            Take a look at all the cakes added by our community of bakers, and the different recipes attached to each cake!
+            </p>
+            {% if user.is_authenticated %}
+
+            {% else %}
+            <p class="subtitle">Not a member yet?</p>
+            <a href="{% url 'signup' %}"><button class="button is-link is-light">Sign up now!</button></a>
+            {% endif %}
+        </div>
+    </div>
 </section>
 
 <section class="section">
@@ -28,15 +36,15 @@ View All Cakes
                 <div class="card m-3">
                     <a href="{% url 'detail' cake.id %}" style="text-decoration: none; color: black">
                         <div class="card-image">
-                            <figure class="image">
+                            <figure class="image is-square">
                                 <img src="{{ cake.imageurl }}" id="cakeImage"/>
                             </figure>
                         </div>
                     
                         <div class="card-content" style="background-color: {{ cake.flavours }}">
-                            <p class="title is-4">
+                            <h3 class="title is-3">
                                 {{ cake.name }}
-                            </p>
+                            </h3>
                             <div class="content">
                                 <p><b>Primary Flavour:</b> 
                                     <br>{{ cake.get_flavours_display }}</p>
@@ -56,11 +64,11 @@ View All Cakes
             <nav class="pagination is-centered" role="navigation" aria-label="pagination">
                 <span class="step-links">
                     {% if page_obj.has_previous %}
-                        <a class="pagination-previous" href="?page=1">&laquo; first</a>
-                        <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        <a class="pagination-previous" href="?page=1">&laquo; First</a>
+                        <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                     {% else %}
-                        <a class="pagination-previous" href="#">&laquo; first</a>
-                        <a class="pagination-previous" href="#">previous</a>
+                        <a class="pagination-previous" href="#">&laquo; First</a>
+                        <a class="pagination-previous" href="#">Previous</a>
                     {% endif %}
     
                     <span class="current">
@@ -68,15 +76,15 @@ View All Cakes
                     </span>
     
                     {% if page_obj.has_next %}
-                        <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
                     {% else %}
-                    <a class="pagination-next" href="#">next</a>
-                    <a class="pagination-next" href="#">last &raquo;</a>
+                    <a class="pagination-next" href="#">Next</a>
+                    <a class="pagination-next" href="#">Last &raquo;</a>
                     {% endif %}
                 </span>
             </nav>
-        </div>            
+        </div>
     </div>
 </section>
 
