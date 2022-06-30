@@ -7,8 +7,8 @@ Delete Cake
 
 {% block content %}
 
-<section class="section section--form">
-  <div class="container">
+<section class="section">
+  <div class="container is-max-desktop">
     <div class="content box">
       <h1>Delete {{ cake.name }}</h1>
 
@@ -17,9 +17,9 @@ Delete Cake
       <form action="" method="POST">
         {% csrf_token %}
         <input type="submit" value="Yes - Delete!" class="button is-primary is-light">
+        <a href="{% url 'detail' cake.id %}"><button class="button is-danger is-light ml-3">Cancel</button></a>
         <br>
         <br>
-        <p><a href="{% url 'detail' cake.id %}">Cancel</a></p>
     </form> 
     </div>
     

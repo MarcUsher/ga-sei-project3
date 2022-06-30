@@ -1,133 +1,221 @@
 {% extends 'base.html' %}
+{% load bulma_tags %}
 
 {% block title %}
-<p>Details about {{ cake.name }}</p>
+Details about {{ cake.name }}
 {% endblock %}
 
 {% block content %}
 
+<section class="hero" style="background-color: {{ cake.flavours }}">
+        <div class="hero-body cake-hero">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <figure class="image is-square">
+                        <img src="{{ cake.imageurl }}" id="cakeImage"/>
+                    </figure>
+                </div>
+                <div class="container column is-three-quarters">
+                    <h2 class="title">{{cake.name}} Details</h2>
+                    <p><b>Primary Flavour:</b> {{cake.get_flavours_display}} </p>
+                    <p><b>Description:</b> {{cake.description}} </p>
+                    <br>
+                    <p><em>Added by: {{cake.created_by}}</em></p>
+                    {% if user.id == cake.created_by.id %}
+                    <hr>
+                    <a class="button is-primary is-light" href="{% url 'cakes_update' cake.id %}">Edit Cake</a>
+                    <a class="button is-danger is-light" href="{% url 'cakes_delete' cake.id %}">Delete Cake</a>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+</section>
+        <!-- <div class="cake-container">
+
+            <div class="cake-image-left">
+                <div class="" id="top-of-cake"></div>
+                <img 
+                    src="https://cdn.shopify.com/s/files/1/0856/0804/products/Screenshot2022-05-03at12.37.15_1000x1000_crop_center.png?v=1651583682" 
+                    height="200" width="200"
+                    />
+                <img src="{{cake.imageurl}}", height="100%", width="100%" />
+            </div>
+
+            <div class="recipe-info-right">
+                <div class="" id="top-of-cake"></div>
+                <h3>Recipes for {{ cake.name }}</h3>
+                <h2>{{recipe.name}} Details</h2>
+                <p>Description: {{recipe.description}} </p>
+                <p>How to make it: {{recipe.instructions}}</p><br />
+                <hr>
+                <p>Added by: {{recipe.created_by}} on {{created_date}}</p>
+                <br>
+            </div>
+                                                                
+        </div> -->
+
+
+
+        <br>
+
 <section class="section">
     <div class="container">
+        
+        <h3 class="title is-3">Recipes for {{ cake.name }}</h3>
 
-    
-<div class="cakeInfo"></div>
-<h2>{{cake.name}} Details</h2>
-<p>Primary Flavour: {{cake.get_flavours_display}} </p>
-<p>Description: {{cake.description}} </p>
-<hr>
-<p>Added by: {{cake.created_by}}</p>
-</div>
-<br>
-<hr>
-<br>
-
-<div class="cake-container">
-
-    <div class="cake-image-left">
-        <div class="" id="top-of-cake"></div>
-        <img 
-            src="https://cdn.shopify.com/s/files/1/0856/0804/products/Screenshot2022-05-03at12.37.15_1000x1000_crop_center.png?v=1651583682" 
-            height="200" width="200"
-            />
-        <img src="{{cake.imageurl}}", height="100%", width="100%" />
-    </div>
-
-    <div class="recipe-info-right">
-        <div class="" id="top-of-cake"></div>
-        <h3>Recipes for {{ cake.name }}</h3>
-        <h2>{{recipe.name}} Details</h2>
-        <p>Description: {{recipe.description}} </p>
-        <p>How to make it: {{recipe.instructions}}</p><br />
-        <hr>
-        <p>Added by: {{recipe.created_by}} on {{created_date}}</p>
+        {% if user.is_authenticated %}
+        <!-- <a href ="{% url 'add_recipe' cake.id %}">Add A Recipe</a> -->
+        <p>Get involved - add your favourite version of this cake here!</p>
+        <a id="modal-button" class="button is-link is-light mt-3">Add Recipe for {{cake.name}}</a>
         <br>
-    </div>
-                                                          
-</div>
-
-
-{% if user.id == cake.created_by.id %}
-<a class="button is-link is-light" href="{% url 'cakes_update' cake.id %}">Edit Cake</a>
-<a class="button is-link is-light" href="{% url 'cakes_delete' cake.id %}">Delete Cake</a>
-{% endif %}
-
-{% if user.is_authenticated %}
-<!-- <a href ="{% url 'add_recipe' cake.id %}">Add A Recipe</a> -->
-<a id="modal-button" class="button is-link is-light">Add Recipe for {{cake.name}}</a>
-
-<div id="recipe-form" class="modal">
-    <div class="modal-content">
-        <h4>New Recipe</h4><span class="close">&times;</span>
-        <form action="{% url 'add_recipe' cake.id %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" class="button is-link is-light" value="Add Recipe">
-        </form>
-    </div>
-</div>
-    
-
-{% endif %}
-<br>
-<hr>
-<br>
-<h3>Recipes for {{ cake.name }}</h3>
-
-
-{% if cake.recipe_set.all %}
-
-    {% for recipe in page_obj %}
-        <div class="card">
-            <div class="card-content">
-                <h4>
-                    {{ recipe.title }}
-                </h4>
-                <p><strong>Description: </strong>{{ recipe.description}}</p>
-                <p>Added by {{ recipe.created_by }} on {{ recipe.created_date }}.</p>
+        <div id="recipe-form" class="modal-recipe">
+            <div class="modal-content content box">
+                <h4>New Recipe</h4><span class="close">&times;</span>
+                <form action="{% url 'add_recipe' cake.id %}" method="post">
+                    {% csrf_token %}
+                    {{ form|bulma }}
+                    <input type="submit" class="button is-primary is-light" value="Add Recipe">
+                </form>
             </div>
-            {% if user.id == recipe.created_by.id %}
-            <div class="card-action">
-                <a class="button is-link is-light" href="{% url 'recipes_update' recipe.id %}">Edit</a>
-                <a class="button is-link is-light" href="{% url 'recipes_delete' recipe.id %}">Delete</a>
-            </div>
-            {% endif %}
         </div>
-    {% endfor %}
-    
-    <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                ||
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% else %}
-                &laquo; first
-                ||
-                previous
-            {% endif %}
-    
-            <span class="current">
-                || Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} ||
-            </span>
-    
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                ||
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% else %}
-                next
-                ||
-                last &raquo;
-            {% endif %}
-        </span>
+        {% endif %}
+
+        <br>
+
+        {% if cake.recipe_set.all %}
+
+                <div class="container columns is-multiline">
+
+                    {% for recipe in page_obj %}
+                    <div class="column is-one-third">
+                        <div class="card m3">
+                            <div class="card-image">
+                                <figure class="image is-square">
+                                    <img src="{{ recipe.imageurl }}" id="cakeImage"/>
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="title is-4">
+                                    {{ recipe.title }}
+                                </h4>
+                                <p><strong>Description:</strong> {{ recipe.description}}</p>
+                                <p><b>Ingredients:</b> {{recipe.ingredients}}</p>
+                                <p><b>Instructions:</b> {{recipe.instructions}}</p>
+                                <hr>
+                                <p><em>Added by {{ recipe.created_by }} on {{ recipe.created_date }}</em></p>
+                            </div>
+                            <div class="card-footer">
+                                <!-- Modal Functionality Not Working -->
+                                <!-- <a class="card-footer-item js-modal-trigger-{{recipe.id}}" data-target="modal-{{recipe.id}}">Full Details</a> -->
+                                {% if user.id == recipe.created_by.id %}
+                                <a class="card-footer-item" href="{% url 'recipes_update' recipe.id %}">Edit</a>
+                                <a class="card-footer-item" href="{% url 'recipes_delete' recipe.id %}">Delete</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Functionality Not Working -->
+                    <!-- <div class="modal modal-{{recipe.id}}" id="modal-{{recipe.id}}">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                          <header class="modal-card-head">
+                            <p class="modal-card-title">{{recipe.title}}</p>
+                            <button class="delete" aria-label="close"></button>
+                          </header>
+                          <section class="modal-card-body">
+                            <p><strong>Description:</strong> {{ recipe.description}}</p>
+                            <p>Added by {{ recipe.created_by }} on {{ recipe.created_date }}</p>
+                            <p><b>Ingredients:</b> {{recipe.ingredients}}</p>
+                            <p><b>Instructions:</b> {{recipe.instructions}}</p>
+                          </section>
+                        </div>
+                      </div> -->
+                    {% endfor %}
+                </div>
+                <div class="pagination-container column">
+                    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                        <span class="step-links">
+                            {% if page_obj.has_previous %}
+                                <a class="pagination-previous" href="?page=1">&laquo; First</a>
+                                <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            {% else %}
+                                <a class="pagination-previous" href="#">&laquo; First</a>
+                                <a class="pagination-previous" href="#">Previous</a>
+                            {% endif %}
+            
+                            <span class="current">
+                                || Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} ||
+                            </span>
+            
+                            {% if page_obj.has_next %}
+                                <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                            {% else %}
+                            <a class="pagination-next" href="#">Next</a>
+                            <a class="pagination-next" href="#">Last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </nav>
+                </div>
+                
+        {% else %}
+            <p>No recipes yet</p>
+        {% endif %}
     </div>
-
-{% else %}
-    <p>No recipes yet</p>
-{% endif %}
-
-
-</div>
-</div>
 </section>
+
+
+
+<!-- <script>
+
+// Recipe detail modal - Currently not working - will try to implement at a later date!
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger-{{recipe.id}}') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById("modal-{{recipe.id}}");
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) { // Escape key
+      closeAllModals();
+    }
+  });
+});
+</script> -->
+
 {% endblock %}
