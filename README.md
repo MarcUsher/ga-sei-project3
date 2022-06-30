@@ -26,6 +26,13 @@ The first step in our approach to building our app was to map the routes and CRU
 
 Once the app was in a state where we could individually work on separate aspects of it, we assessed our flowchart, discussed which features we had the groundwork to implement, and selected an area of the app to develop independently. In the event one of us ran up against a difficult issue, we would go back to pair programming until the issue was resolved; this ensured that obstacles would be overcome as quickly as possible and everyone could proceed onto the next criteria, rather than leaving one teammate to struggle while the others pressed on with their own development. This flow repeated until completion - we would look at which pieces of the project remained incomplete, decide amongst ourselves which we felt most comfortable to attempt, and assisted each other in completing them whenever necessary.
 
+Unfortunately, we initialised our Git folders in the wrong locations at the beginning of the process, so when it came time to host the app on Heroku we ran into one issue after another. The only solution to this issue was to each create a new repository for our project and migrate our files over with the correct structure - this means that the majority of our project's commit history is confined to obsolete repositories. For documentation's sake, these repositories are linked below:
+
+#### Obsolete repositories for:
+* [Chris](https://git.generalassemb.ly/cailey90/Project-3-Cake-Recipe-Site)
+* [Marc](https://git.generalassemb.ly/marc/Project-3-Cake-Recipe-Site)
+* [Richard](https://git.generalassemb.ly/rakitent/Project-3-Cake-Recipe-Site)
+
 ## Application Architecture
 ### ERD
 ![Project ERD](https://trello.com/1/cards/62b5e53532359505ca19185d/attachments/62b5e58d6e82706751d1e593/previews/62b5e58d6e82706751d1e5da/download/Cake_Project_ERD.jpg)
