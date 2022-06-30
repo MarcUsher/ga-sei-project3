@@ -8,6 +8,8 @@ For this Django full stack application project, the team decided to create a web
 
 The idea was to crowdsource variations of well known and lesser known cakes from a community of enthusiastic home bakers, also allowing for people to share variations of the cakes that use different ingredients or cater to different dietary requirements. If the cake doesn't yet exist, a user can add it to the database.
 
+![Cake Sera Sera screenshot](https://imgur.com/4kiZsw3.png)
+
 ## Technologies Used
 * Python
 * Django
