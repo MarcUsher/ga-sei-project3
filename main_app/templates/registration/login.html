@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bulma_tags %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<section class="section section--form">
+    <div class="container is-max-desktop">
+        <div class="content box">
+            <h1>Log In</h1>
+            <form method="post" action="{% url 'login' %}">
+
+                {% csrf_token %}
+                
+                {{ form|bulma }}
+                
+
+                <br>
+
+                <input type="submit" class="button is-primary" value="Log In">
+
+                <input type="hidden" name="next" value="{{ next }}">
+
+            </form>
+            <br>
+            <p>Not signed up yet? <b><a href="{% url 'signup' %}">Sign up now</a></b></p>
+            
+        </div>    
+    </div>
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ cake.name }}
+{% endblock %}
+
+{% block content %}
+
+<h2>{{cake.name}} Details</h2>
+<p>Primary Flavour: {{cake.get_flavours_display}} </p>
+<p>Description: {{cake.description}} </p>
+<hr>
+<p>Added by: {{cake.created_by}}</p>
+<br>
+<hr>
+<br>
+
+{% if user.id == cake.created_by.id %}
+<a href="{% url 'cakes_update' cake.id %}">Edit Cake</a>
+<a href="{% url 'cakes_delete' cake.id %}">Delete Cake</a>
+{% endif %}
+
+{% if user.is_authenticated %}
+<!-- <a href ="{% url 'add_recipe' cake.id %}">Add A Recipe</a> -->
+<a id="modal-button" class="btn recipe">Add your own recipe for {{cake.name}}</a>
+
+<div id="recipe-form" class="modal">
+    <div class="modal-content">
+        <h4>New Recipe</h4><span class="close">&times;</span>
+        <form action="{% url 'add_recipe' cake.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add Recipe" class="btn">
+        </form>
+    </div>
+</div>
+    
+
+{% endif %}
+<br>
+<hr>
+<br>
+<h3>Recipes for {{ cake.name }}</h3>
+
+
+{% if cake.recipe_set.all %}
+
+    {% for recipe in page_obj %}
+        <div class="card">
+            <div class="card-content">
+                <h4>
+                    {{ recipe.title }}
+                </h4>
+                <p><strong>Description: </strong>{{ recipe.description}}</p>
+                <p>Added by {{ recipe.created_by }} on {{ recipe.created_date }}.</p>
+            </div>
+            {% if user.id == recipe.created_by.id %}
+            <div class="card-action">
+                <a href="{% url 'recipes_update' recipe.id %}">Edit</a>
+                <a href="{% url 'recipes_delete' recipe.id %}">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+    
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                ||
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% else %}
+                &laquo; first
+                ||
+                previous
+            {% endif %}
+    
+            <span class="current">
+                || Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} ||
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                ||
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% else %}
+                next
+                ||
+                last &raquo;
+            {% endif %}
+        </span>
+    </div>
+
+{% else %}
+    <p>No recipes yet</p>
+{% endif %}
+
+
+{% endblock %}

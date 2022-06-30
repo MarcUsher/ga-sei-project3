@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ recipe.name }}
+{% endblock %}
+
+{% block content %}
+<title> Recipe Details</title>
+<h2>{{recipe.name}} Details</h2>
+
+<p>Description: {{recipe.description}} </p>
+<hr>
+<p>Added by: {{recipe.created_by}}</p>
+<br>
+<hr>
+<br>
+
+{% if user.id == cake.created_by.id %}
+<a href="{% url 'recipes_update' cake.id %}">Edit Cake</a>
+<a href="{% url 'recipes_delete' cake.id %}">Delete Cake</a>
+{% endif %}
+
+{% if user.is_authenticated %}
+<!-- <a href ="{% url 'add_recipe' cake.id %}">Add A Recipe</a> -->
+<a id="modal-button" class="btn recipe">Add your own recipe for {{cake.name}}</a>
+
+<div id="recipe-form" class="modal">
+    <div class="modal-content">
+        <h4>New Recipe</h4><span class="close">&times;</span>
+        <form action="{% url 'add_recipe' cake.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add Recipe" class="btn">
+        </form>
+    </div>
+</div>
+    
+
+{% endif %}
+<br>
+<hr>
+<br>
+<h3>Recipes for {{ cake.name }}</h3>
+
+
+{% if cake.recipe_set.all %}
+
+    {% for recipe in cake.recipe_set.all %}
+        <div class="card">
+            <div class="card-content">
+                <h4>
+                    {{ recipe.title }}
+                </h4>
+                <p><strong>Description: </strong>{{ recipe.description}}</p>
+                <p>Added by {{ recipe.created_by }} on {{ recipe.created_date }}.</p>
+            </div>
+            {% if user.id == recipe.created_by.id %}
+            <div class="card-action">
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+{% else %}
+    <p>No recipes yet</p>
+{% endif %}
+
+
+{% endblock %}

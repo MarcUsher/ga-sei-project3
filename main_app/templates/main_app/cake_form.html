@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load bulma_tags %}
+
+{% block title %}
+    {% if object  %}
+        Edit {{object.name}}
+    {% else %}
+        Add New Cake
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<section class="section section--form">
+    <div class="container is-max-desktop">
+        <div class="content box">
+            {% if object %}
+                <h1>Edit {{object.name}}</h1>
+            {% else %}
+                <h1>Add a Cake</h1>
+            {% endif %}
+
+            <form action ="" method="post">
+                
+                {% csrf_token %}
+                {{ form|bulma }}
+        
+                <input type="submit" value="Submit" class="button is-primary">
+            </form>
+        </div>    
+    </div>
+</section>
+
+
+{% endblock %}

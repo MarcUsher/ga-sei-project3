@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+View All Cakes
+{% endblock %}
+
+{% block content %}
+
+<section class="hero is-primary">
+    <div class="hero-body">
+        <p class="title">
+          Cake Sera Sera
+        </p>
+        <p class="subtitle">
+          Whatever will be, we'll bake
+        </p>
+      </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="container columns is-multiline">
+
+            {% for cake in page_obj %}
+            
+            
+            <div class="column is-half">
+                <div class="card m-3">
+                    <a href="{% url 'detail' cake.id %}" style="text-decoration: none; color: black">
+                        <div class="card-image">
+                            <figure class="image">
+                                <img src="{{ cake.imageurl }}" id="cakeImage"/>
+                            </figure>
+                        </div>
+                    
+                        <div class="card-content" style="background-color: {{ cake.flavours }}">
+                            <p class="title is-4">
+                                {{ cake.name }}
+                            </p>
+                            <div class="content">
+                                <p><b>Primary Flavour:</b> 
+                                    <br>{{ cake.get_flavours_display }}</p>
+                                <p><b>Description:</b> 
+                                    <br>{{ cake.description }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div> 
+            </div>
+
+            {% endfor %}
+
+        </div>
+        <br>
+        <div class="pagination-container">
+            <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a class="pagination-previous" href="?page=1">&laquo; first</a>
+                        <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% else %}
+                        <a class="pagination-previous" href="#">&laquo; first</a>
+                        <a class="pagination-previous" href="#">previous</a>
+                    {% endif %}
+    
+                    <span class="current">
+                        || Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} ||
+                    </span>
+    
+                    {% if page_obj.has_next %}
+                        <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% else %}
+                    <a class="pagination-next" href="#">next</a>
+                    <a class="pagination-next" href="#">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </nav>
+        </div>            
+    </div>
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bulma_tags %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+
+<section class="section section--form">
+    <div class="container is-max-desktop">
+        <div class="content box">
+            <h1>Sign Up</h1>
+
+            <form method="post" action="{% url 'signup' %}">
+
+                {% csrf_token %}
+                {{ form|bulma }}
+
+                <br>
+
+                <input type="submit" class="button is-primary" value="Sign Up!">
+
+            </form>
+        </div>    
+    </div>
+</section>
+
+
+{% endblock %}

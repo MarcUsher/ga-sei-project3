@@ -1,0 +1,68 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Cakes cakes Cakes
+{% endblock %}
+
+{% block content %}
+
+<section class="section">
+
+    {% if user.is_authenticated %}
+
+    <section class="sect" id="splash">
+        
+    </section>
+
+    <section class="sect" style="background-color: #F4D2DB">
+        <div class="container">
+            <div class="cont1">
+                <h1 class="title title-center">Add a cake and get involved!</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="sect" style="background-color: #F4D2F3">
+        <div class="container">
+            <div class="cont1">
+                <h1 class="title title-center">Browse cakes and submit your own recipes!</h1>
+            </div>
+        </div>
+    </section>
+
+    {% else %}
+
+    <section class="sect" id="splash">
+        <div class="container">
+            <div class="cont1">
+                <h1 class="title title-center">Welcome to Cake Sera Sera!</h1>
+                <p>
+                    There's not many people out there who don't love a nice slice of cake.
+                    That's why we started Cake Sera Sera as a space for people to share their personal recipes for their favourite cakes.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sect" style="background-color: #F4D2DB">
+        <div class="container">
+            <div class="cont1">
+                <h1 class="title title-center">Sign up and get started!</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="sect" style="background-color: #F4D2F3">
+        <div class="container">
+            <div class="cont1">
+                <h1 class="title title-center">Browse our collection of cakes and recipes, and see what we're all about!</h1>
+            </div>
+        </div>
+    </section>
+
+    {% endif %}
+
+</section>
+
+
+{% endblock%}

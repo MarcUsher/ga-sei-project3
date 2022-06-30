@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load bulma_tags %}
+
+{% block title %}
+Delete Recipe
+{% endblock %}
+
+{% block content %}
+
+<section class="section section--form">
+  <div class="container">
+    <div class="content box">
+      <h1>Delete</h1>
+
+      <h4>Are you sure you want to delete <span class="red-text">{{ recipe.title }}</span>?</h4>
+
+      <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Yes - Delete!" class="button is-primary">
+        <p><a href="{% url 'detail' recipe.cake_id %}">Cancel</a></p>
+      </form>
+    </div>
+    
+  </div>
+
+</section>
+
+{% endblock %}
