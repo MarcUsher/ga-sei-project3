@@ -12,6 +12,9 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cutive&family=Arvo&family=Bree+Serif&family=Josefin+Slab&family=Maitree:wght@300&display=swap" rel="stylesheet">
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 </head>
 <body>
@@ -25,7 +28,7 @@
                 </div>
                 
                 
-                    <h1 id="head-title" class="navbar-item">Cake Sera Sera</h1>
+                    <a href="{% url 'home' %} "><h1 id="head-title" class="navbar-item">Cake Sera, Sera</h1></a>
                 
 
                 <div class="navbar-end">
@@ -35,7 +38,7 @@
                 {% else %}
                 </div>
 
-                <h1 id="head-title">Cake Sera Sera</h1>
+                <a href="{% url 'home' %} "><h1 id="head-title" class="navbar-item">Cake Sera, Sera</h1></a>
 
                 <div class="navbar-end">
                     <a href ="{% url 'signup' %}" class="navbar-item">Sign Up</a>

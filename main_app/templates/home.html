@@ -14,51 +14,59 @@ Cakes cakes Cakes
         
     </section>
 
-    <section class="sect" style="background-color: #F4D2DB">
-        <div class="container">
-            <div class="cont1">
-                <h1 class="title title-center">Add a cake and get involved!</h1>
+    <a href="{% url 'cakes_create' %}">
+        <section class="sect" style="background-color: #F4D2DB">
+            <div class="container">
+                <div class="cont1 homepage-flex">
+                    <h1 class="title stroked">Add a cake and get involved!</h1>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </a>
 
+<a href="{% url 'index' %}">
     <section class="sect" style="background-color: #F4D2F3">
         <div class="container">
-            <div class="cont1">
-                <h1 class="title title-center">Browse cakes and submit your own recipes!</h1>
+            <div class="cont1 homepage-flex">
+                <h1 class="title stroked">Browse cakes and submit your own recipes!</h1>
             </div>
         </div>
     </section>
+</a>
 
     {% else %}
 
     <section class="sect" id="splash">
         <div class="container">
-            <div class="cont1">
-                <h1 class="title title-center">Welcome to Cake Sera Sera!</h1>
-                <p>
-                    There's not many people out there who don't love a nice slice of cake.
-                    That's why we started Cake Sera Sera as a space for people to share their personal recipes for their favourite cakes.
+            <div class="cont1 homepage-flex">            
+                <h1 class="title stroked">Welcome to Cake Sera, Sera!</h1>
+                <p class="home-text stroked">
+                    There's not many people out there who don't love a good slice of cake, but everyone likes something a little bit different.
+                    That's why we started Cake Sera, Sera as a space for people to share their personal recipes for their favourite cakes.
                 </p>
             </div>
         </div>
     </section>
 
-    <section class="sect" style="background-color: #F4D2DB">
-        <div class="container">
-            <div class="cont1">
-                <h1 class="title title-center">Sign up and get started!</h1>
+    <a href="{% url 'signup' %}">
+        <section class="sect" style="background-color: #E4C1F9">
+            <div class="container">
+                <div class="cont1 homepage-flex">
+                    <h1 class="title stroked">Sign up and get started!</h1>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </a>
 
-    <section class="sect" style="background-color: #F4D2F3">
-        <div class="container">
-            <div class="cont1">
-                <h1 class="title title-center">Browse our collection of cakes and recipes, and see what we're all about!</h1>
+    <a href="{% url 'index' %}">
+        <section class="sect" style="background-color: #5bcbba">
+            <div class="container">
+                <div class="cont1 homepage-flex">
+                    <h1 class="title stroked">Browse our collection of cakes and recipes, and see what we're all about!</h1>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </a>
 
     {% endif %}
 
