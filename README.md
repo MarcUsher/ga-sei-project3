@@ -36,8 +36,16 @@ The idea was to crowdsource variations of well known and lesser known cakes from
 
 ### WIREFRAMES
 [Full Wireframes on Figma](https://www.figma.com/file/TZoFGaVXjTqfhnrhjKanf3/Project-3---Have-your-cake-and-eat-it?node-id=0%3A1)
-
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FTZoFGaVXjTqfhnrhjKanf3%2FProject-3---Have-your-cake-and-eat-it%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
+* Home Page - For Visitors
+![Home Page - For Visitors](https://trello.com/1/cards/62bda022f57beb1bff75fca8/attachments/62bda06657db3e2b8341324e/previews/62bda06657db3e2b83413290/download/image.png)
+* Home Page - For Users
+![Home Page - For Users](https://trello.com/1/cards/62bda022f57beb1bff75fca8/attachments/62bda03e59802f1b550a3d44/previews/62bda03f59802f1b550a3d8b/download/image.png)
+* Cake Index
+![Cake Index](https://trello.com/1/cards/62bda022f57beb1bff75fca8/attachments/62bda08682bd755b6b00051a/previews/62bda08682bd755b6b000531/download/image.png)
+* Cake Detail
+![Cake Detail](https://trello.com/1/cards/62bda022f57beb1bff75fca8/attachments/62bda0adb4dca44688de4856/previews/62bda0aeb4dca44688de489e/download/image.png)
+* Cake Detail - Modal
+![Cake Detail - Modal](https://trello.com/1/cards/62bda022f57beb1bff75fca8/attachments/62bda0d892f37e1cb1d4a79b/previews/62bda0d992f37e1cb1d4a80f/download/image.png)
 
 ## Major Hurdles Overcome
 * Pagination on the Cake Index page but particularly of the recipes on the Cake Detail page
