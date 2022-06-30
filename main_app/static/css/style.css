@@ -3,6 +3,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-color: #faffff;
+  font-family: 'Arvo', serif;
 }
 
 main {
