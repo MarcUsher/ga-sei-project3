@@ -14,6 +14,15 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 load_dotenv()
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'is-link is-light',
+        messages.INFO: 'is-info is-light',
+        messages.SUCCESS: 'is-primary is-light',
+        messages.WARNING: 'is-warning is-light',
+        messages.ERROR: 'is-danger is-light',
+ }
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,9 +93,9 @@ WSGI_APPLICATION = 'cakeproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': ''
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USERNAME'),
+        'PASSWORD': os.getenv('PASSWORD'),
     }
 }
 
@@ -134,5 +143,5 @@ LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())

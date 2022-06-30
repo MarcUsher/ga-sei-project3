@@ -29,7 +29,7 @@
                 
 
                 <div class="navbar-end">
-                    <a class="navbar-item greeting">Hi there, {{user.username}}!</a>
+                    <a class="navbar-item greeting"><em>Hi there, {{user.username}}!</em></a>
                     <a href="{% url 'password_change' %}" class="navbar-item">Change Password</a>
                     <a href="{% url 'logout' %}" class="navbar-item">Log Out</a>
                 {% else %}
@@ -48,8 +48,12 @@
 
 
     {% if messages %}
+        <br>
         {% for message in messages %}
-        <p {% if message.tags %} class="{{ message.tags }}"{% endif %} style="margin: auto;">{{ message }}</p>
+        <div {% if message.tags %} class="notification {{ message.tags }}"{% endif %} style="margin: auto;">
+            <button class="delete" onclick="this.parentElement.style.display='none'" ></button>
+            {{ message }}
+        </div>
         {% endfor %}
     {% endif %}
     

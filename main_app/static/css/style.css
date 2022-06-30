@@ -28,6 +28,10 @@ main {
   padding: 0.5rem 0.75rem;
 }
 
+.notification {
+  margin: 15px 0px;
+}
+
 footer {
   height: 50px;
   position: relative;
@@ -54,7 +58,7 @@ footer {
   display: flex;
 }
 
-.section--form {
+.box {
   background-color: #E4C1F9;
 }
 
