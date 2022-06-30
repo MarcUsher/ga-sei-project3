@@ -7,14 +7,17 @@ View All Cakes
 {% block content %}
 
 <section class="hero is-primary">
-    <div class="hero-body">
-        <p class="title">
-          Cake Sera Sera
-        </p>
-        <p class="subtitle">
-          Whatever will be, we'll bake
-        </p>
-      </div>
+    <div class="container">
+        <div class="hero-body">
+            <p class="title">
+            Our cake shelf
+            </p>
+            <p class="subtitle">
+            Take a look at all the cakes added by our community of bakers, and the different recipes attached to each cake!
+            </p>
+            <p class="subtitle">Not a member yet? <b><a href="{% url 'signup' %}">Sign up now!</a></b></p>
+        </div>
+    </div>
 </section>
 
 <section class="section">
@@ -28,7 +31,7 @@ View All Cakes
                 <div class="card m-3">
                     <a href="{% url 'detail' cake.id %}" style="text-decoration: none; color: black">
                         <div class="card-image">
-                            <figure class="image">
+                            <figure class="image is-square">
                                 <img src="{{ cake.imageurl }}" id="cakeImage"/>
                             </figure>
                         </div>
@@ -56,11 +59,11 @@ View All Cakes
             <nav class="pagination is-centered" role="navigation" aria-label="pagination">
                 <span class="step-links">
                     {% if page_obj.has_previous %}
-                        <a class="pagination-previous" href="?page=1">&laquo; first</a>
-                        <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        <a class="pagination-previous" href="?page=1">&laquo; First</a>
+                        <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                     {% else %}
-                        <a class="pagination-previous" href="#">&laquo; first</a>
-                        <a class="pagination-previous" href="#">previous</a>
+                        <a class="pagination-previous" href="#">&laquo; First</a>
+                        <a class="pagination-previous" href="#">Previous</a>
                     {% endif %}
     
                     <span class="current">
@@ -68,15 +71,15 @@ View All Cakes
                     </span>
     
                     {% if page_obj.has_next %}
-                        <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
                     {% else %}
-                    <a class="pagination-next" href="#">next</a>
-                    <a class="pagination-next" href="#">last &raquo;</a>
+                    <a class="pagination-next" href="#">Next</a>
+                    <a class="pagination-next" href="#">Last &raquo;</a>
                     {% endif %}
                 </span>
             </nav>
-        </div>            
+        </div>
     </div>
 </section>
 

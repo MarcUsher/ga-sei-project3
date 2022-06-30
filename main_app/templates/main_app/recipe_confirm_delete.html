@@ -7,7 +7,7 @@ Delete Recipe
 
 {% block content %}
 
-<section class="section section--form">
+<section class="section">
   <div class="container">
     <div class="content box">
       <h1>Delete</h1>
@@ -16,7 +16,9 @@ Delete Recipe
 
       <form action="" method="POST">
         {% csrf_token %}
-        <input type="submit" value="Yes - Delete!" class="button is-primary">
+        <input type="submit" value="Yes - Delete!" class="button is-primary is-light">
+        <br>
+        <br>
         <p><a href="{% url 'detail' recipe.cake_id %}">Cancel</a></p>
       </form>
     </div>

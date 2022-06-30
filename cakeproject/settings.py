@@ -14,6 +14,15 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 load_dotenv()
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'is-link is-light',
+        messages.INFO: 'is-info is-light',
+        messages.SUCCESS: 'is-primary is-light',
+        messages.WARNING: 'is-warning is-light',
+        messages.ERROR: 'is-danger is-light',
+ }
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': '',
         'USER': '',
-        'PASSWORD': ''
+        'PASSWORD': '',
     }
 }
 
