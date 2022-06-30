@@ -6,7 +6,7 @@ View All Cakes
 
 {% block content %}
 
-<section class="hero is-primary">
+<section class="hero is-warning is-light">
     <div class="container">
         <div class="hero-body">
             <p class="title">
@@ -15,7 +15,8 @@ View All Cakes
             <p class="subtitle">
             Take a look at all the cakes added by our community of bakers, and the different recipes attached to each cake!
             </p>
-            <p class="subtitle">Not a member yet? <b><a href="{% url 'signup' %}">Sign up now!</a></b></p>
+            <p class="subtitle">Not a member yet?</p>
+            <a href="{% url 'signup' %}"><button class="button is-info is-light">Sign up now!</button></a>
         </div>
     </div>
 </section>
@@ -37,9 +38,9 @@ View All Cakes
                         </div>
                     
                         <div class="card-content" style="background-color: {{ cake.flavours }}">
-                            <p class="title is-4">
+                            <h3 class="title is-3">
                                 {{ cake.name }}
-                            </p>
+                            </h3>
                             <div class="content">
                                 <p><b>Primary Flavour:</b> 
                                     <br>{{ cake.get_flavours_display }}</p>
