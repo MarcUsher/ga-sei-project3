@@ -93,9 +93,9 @@ WSGI_APPLICATION = 'cakeproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USERNAME'),
-        'PASSWORD': os.getenv('PASSWORD'),
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
     }
 }
 
