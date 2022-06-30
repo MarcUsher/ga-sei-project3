@@ -15,8 +15,12 @@ View All Cakes
             <p class="subtitle">
             Take a look at all the cakes added by our community of bakers, and the different recipes attached to each cake!
             </p>
+            {% if user.is_authenticated %}
+
+            {% else %}
             <p class="subtitle">Not a member yet?</p>
             <a href="{% url 'signup' %}"><button class="button is-link is-light">Sign up now!</button></a>
+            {% endif %}
         </div>
     </div>
 </section>

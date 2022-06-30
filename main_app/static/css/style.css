@@ -1,13 +1,13 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #faffff;
 }
 
 main {
-    flex: 1 0 auto;
-    /* background-color: #E4C1F9; */
+  flex: 1 0 auto;
+  /* background-color: #E4C1F9; */
 }
 
 .navbar {
@@ -26,6 +26,12 @@ main {
   position: relative;
   text-align: center;
   font-family: 'Cutive', serif;
+}
+
+#head-title h1 {
+  top: 15px;
+  margin-bottom: 5px;
+  font-size: 45px
 }
 
 .notification {
@@ -97,7 +103,6 @@ footer {
   background-image: url("../images/cupcake-splash-cropped.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: -1;
 }
 
 .homepage-flex {
@@ -107,17 +112,36 @@ footer {
   align-content: center;
 }
 
-.shadebox {
-  background-color:rgb(0, 0, 0);
-  border-radius: 2px/5px;
+.shadowbox-out {
+  height: 50%;
+  width: 47%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 4%/10%;
+  box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.4);
+
+}
+
+.shadowbox-in {
+  height: 30%;
+  width: 47%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 4%/10%;
+  box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.4);
 }
 
 .home-text {
   font-size: 22px;
   font-weight: 600;
   text-align: center;
-  margin-left: 250px;
-  margin-right: 250px;
+  
 }
 
 header {
@@ -125,24 +149,16 @@ header {
 }
 
 .stroked {
-  display: flex;
+  text-align: center;
   font-family: 'Arvo', serif;
-  color: rgb(0, 0, 0);
+  color: #D0F4DE;
   text-shadow: 
-  -1px -1px 1.5px rgb(255, 255, 255), 
-  1px -1px 1.5px rgb(255, 255, 255), 
-  -1px 1px 1.5px rgb(255, 255, 255), 
-  1px 1px 1.5px rgb(255, 255, 255);
-  z-index: 1;
+  -1px -1px 1.5px rgb(0, 0, 0), 
+  1px -1px 1.5px rgb(0, 0, 0), 
+  -1px 1px 1.5px rgb(0, 0, 0), 
+  1px 1px 1.5px rgb(0, 0, 0);
 }
 
-.shadowbox {
-  display: flex;
-  background-color: black;
-  z-index: 0;
-  width: 500px;
-  height: 250px;
-}
 /* 
 .cake-hero {
   text-align: center;

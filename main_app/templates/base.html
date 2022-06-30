@@ -27,18 +27,25 @@
                     <a href ="{% url 'cakes_create' %}" class="navbar-item">Add a Cake</a>                                       
                 </div>
                 
-                
-                    <a href="{% url 'home' %} "><h1 id="head-title" class="navbar-item">Cake Sera, Sera</h1></a>
-                
+                <div id="head-title">
+                    <a href="{% url 'home' %} ">
+                        <h1 class="navbar-item">Cake Sera, Sera</h1>
+                        <h5>Whatever will be, we'll bake.</h5>
+                    </a>
+                </div>
 
                 <div class="navbar-end">
-                    <a class="navbar-item greeting"><em>Hi there, {{user.username}}!</em></a>
                     <a href="{% url 'password_change' %}" class="navbar-item">Change Password</a>
                     <a href="{% url 'logout' %}" class="navbar-item">Log Out</a>
                 {% else %}
                 </div>
 
-                <a href="{% url 'home' %} "><h1 id="head-title" class="navbar-item">Cake Sera, Sera</h1></a>
+                <div id="head-title">
+                    <a href="{% url 'home' %} ">
+                        <h1 class="navbar-item">Cake Sera, Sera</h1>
+                        <h5>Whatever will be, we'll bake.</h5>
+                    </a>
+                </div>
 
                 <div class="navbar-end">
                     <a href ="{% url 'signup' %}" class="navbar-item">Sign Up</a>
