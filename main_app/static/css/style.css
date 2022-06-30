@@ -40,6 +40,10 @@ footer {
   background-color: #D0F4DE;
 }
 
+.image.is-square {
+  object-fit: cover;
+}
+
 #footleft {
   margin-left: 10px;
 }
@@ -56,6 +60,7 @@ footer {
 
 .pagination-container {
   display: flex;
+  justify-content: center;
 }
 
 .box {
@@ -138,8 +143,12 @@ header {
   width: 500px;
   height: 250px;
 }
+/* 
+.cake-hero {
+  text-align: center;
+} */
 
-.modal {
+.modal-recipe {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -154,7 +163,7 @@ header {
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background-color: #E4C1F9;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
@@ -175,5 +184,3 @@ header {
     text-decoration: none;
     cursor: pointer;
   }
-
-
